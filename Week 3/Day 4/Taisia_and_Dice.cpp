@@ -1,5 +1,3 @@
-// This Code Is Incomplete
-
 #include <bits/stdc++.h>
 using namespace std;
 int main()
@@ -10,22 +8,22 @@ int main()
     {
         int n, s, r;
         cin >> n >> s >> r;
-        int temp = s - r;
-        int baki = r;
-        vector<int> res;
-        res.push_back(temp);
-        while (baki != 0)
+        int baki = s - r;
+        cout << baki << " ";
+        vector<int> ans(n, 0);
+        int i = 0;
+        while (r != 0)
         {
-            if (baki - temp < 0)
-            {
-                temp = (temp - baki);
-            }
-            res.push_back(temp);
-            baki = baki - temp;
+            ans[i]++;
+            r--;
+            i++;
+            i %= (n - 1);
         }
-        for (int i = res.size() - 1; i >= 0; i--)
+
+        for (int i = 0; i < n - 1; i++)
         {
-            cout << res[i];
+            cout << ans[i] << " ";
         }
+        cout << endl;
     }
 }

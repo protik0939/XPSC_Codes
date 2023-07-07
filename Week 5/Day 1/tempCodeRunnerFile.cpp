@@ -1,2 +1,0 @@
-
-        cout << res << endl;

@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/C++ Programing/Xpsc Codes/Week 4/Day 8",
-      "program": "d:/C++ Programing/Xpsc Codes/Week 4/Day 8/build/Debug/outDebug",
+      "cwd": "d:/C++ Programing/Xpsc Codes/Week 5",
+      "program": "d:/C++ Programing/Xpsc Codes/Week 5/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

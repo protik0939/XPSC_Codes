@@ -12,6 +12,8 @@ int main()
     cin >> t;
     while (t--)
     {
-        
+        ll n;
+        cin >> n;
+        cout << ceil((sqrt(n) - 1) + ((n / sqrt(n) - 1))) << endl;
     }
 }

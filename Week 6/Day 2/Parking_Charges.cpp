@@ -8,10 +8,7 @@ using namespace std;
 int main()
 {
     somoy;
-    ll t;
-    cin >> t;
-    while (t--)
-    {
-        
-    }
+    ll x, y, h;
+    cin >> x >> y >> h;
+    cout << x + (y * (h - 1)) << endl;
 }

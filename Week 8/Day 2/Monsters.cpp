@@ -1,8 +1,4 @@
 #include <bits/stdc++.h>
-#include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/tree_policy.hpp>
-using namespace std;
-using namespace __gnu_pbds;
 
 #define ll long long int
 #define somoy                         \
@@ -32,33 +28,46 @@ using namespace __gnu_pbds;
 #define pii pair<int, int>
 #define pll pair<ll, ll>
 #define pss pair<string, string>
-template <typename T>
-using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
-#define fbo(x, n) *x.find_by_order(n)
-#define ook(x, n) x.order_of_key(n)
+
+using namespace std;
+
+bool cmp(pair<int, int> p, pair<int, int> q)
+{
+    if (p.second > q.second)
+    {
+        return true;
+    }
+    if (p.second < q.second)
+    {
+        return false;
+    }
+    if (p.first < q.first)
+    {
+        return true;
+    }
+    return false;
+}
 
 int main()
 {
     somoy;
     tc
     {
-        ll n, ans = 0;
-        cin >> n;
-        ll arr[n + 1];
-        map<ll,ll>mp;
-        pbds<pll> ms;
-        f1(i, 1, n)
+        ll n, k;
+        cin >> n >> k;
+        pll res[n];
+        f(i, 0, n)
         {
-            cin >> arr[i];
+            ll x;
+            cin >> x;
+            res[i].first = i + 1;
+            res[i].second = (x - 1) % k;
         }
-        fr1(i, 0, n)
+        sort(res, res + n, cmp);
+        f(i, 0, n)
         {
-            mp[arr[i]]++;
-            ll u = mp[arr[i]];
-            pll x = {arr[i], u};
-            ms.insert(x);
-            ans += ms.order_of_key(x);
+            cout << res[i].first << " ";
         }
-        cout << ans << endl;
+        cout << endl;
     }
 }

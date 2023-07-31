@@ -37,61 +37,22 @@ template <typename T>
 using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 #define fbo(x, n) *x.find_by_order(n)
 #define ook(x, n) x.order_of_key(n)
-const int N = 2e5 + 5;
 
 int main()
 {
     somoy;
     tc
     {
-        ll n;
-        cin >> n;
-        ll arr[n - 1], sum = 0;
-        f(i, 0, n - 1)
+        ll x1, x2, y1, y2, z1, z2, sum = 0;
+        cin >> x1 >> x2 >> y1 >> y2 >> z1 >> z2;
+        if (y1 > x1 && z1 > x1 || x1 > y1 && x1 > z1)
         {
-            cin >> arr[i];
+            sum += min(abs(x1 - y1), abs(x1 - z1));
         }
-        set<ll> s;
-        f1(i, 1, n)
+        if (y2 > x2 && z2 > x2 || x2 > y2 && x2 > z2)
         {
-            s.insert(i);
+            sum += min(abs(x2 - y2), abs(x2 - z2));
         }
-        ll tmp = 0, brr[n - 1];
-        f(i, 0, n - 1)
-        {
-            if (i)
-            {
-                brr[i] = arr[i] - arr[i - 1];
-            }
-            else
-            {
-                brr[i] = arr[i];
-            }
-            if (brr[i] > n || !s.count(brr[i]))
-            {
-                tmp = brr[i];
-            }
-            else
-            {
-                s.erase(brr[i]);
-            }
-        }
-        ll ttl = 0;
-        for (auto it : s)
-        {
-            ttl += it;
-        }
-        if (s.size() > 2)
-        {
-            cout << "NO" << endl;
-        }
-        else if (ttl == tmp || tmp == 0)
-        {
-            cout << "YES" << endl;
-        }
-        else
-        {
-            cout << "NO" << endl;
-        }
+        cout << sum + 1 << endl;
     }
 }

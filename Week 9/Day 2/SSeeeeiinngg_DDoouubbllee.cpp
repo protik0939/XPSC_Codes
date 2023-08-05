@@ -43,33 +43,11 @@ int main()
     somoy;
     tc
     {
-        ll n, m;
-        cin >> n >> m;
-        vl arr, brr;
-        f(i, 0, n)
-        {
-            ll val;
-            cin >> val;
-            arr.pb(val);
-        }
-        for (ll i = 0; i < m; i++)
-        {
-            ll val;
-            cin >> val;
-            brr.pb(val);
-        }
-        srt(arr);
-        for (ll i = 0; i < m; i++)
-        {
-            arr[0] = brr[i];
-            srt(arr);
-        }
-
-        ll res = 0;
-        f(i, 0, n)
-        {
-            res += arr[i];
-        }
+        string s, res = "";
+        cin >> s;
+        res += s;
+        rvrs(s);
+        res += s;
         cout << res << endl;
     }
 }

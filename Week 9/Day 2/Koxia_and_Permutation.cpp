@@ -43,33 +43,20 @@ int main()
     somoy;
     tc
     {
-        ll n, m;
-        cin >> n >> m;
-        vl arr, brr;
-        f(i, 0, n)
+        ll n, k;
+        cin >> n >> k;
+        ll lft = 1, rgt = n;
+        while (lft <= rgt)
         {
-            ll val;
-            cin >> val;
-            arr.pb(val);
-        }
-        for (ll i = 0; i < m; i++)
-        {
-            ll val;
-            cin >> val;
-            brr.pb(val);
-        }
-        srt(arr);
-        for (ll i = 0; i < m; i++)
-        {
-            arr[0] = brr[i];
-            srt(arr);
-        }
+            if (lft != rgt)
+                cout << rgt << " " << lft << " ";
+            else
+            {
 
-        ll res = 0;
-        f(i, 0, n)
-        {
-            res += arr[i];
+                cout << lft << endl;
+            }
+            lft++;
+            rgt--;
         }
-        cout << res << endl;
     }
 }

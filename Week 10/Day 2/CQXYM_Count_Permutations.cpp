@@ -51,5 +51,17 @@ using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node
 int main()
 {
     somoy;
-    
+    ll md = 1e9 + 7;
+    tc
+    {
+        ll n, r = 1;
+        cin >> n;
+        n *= 2;
+        f1(i, 3, n)
+        {
+            r *= i;
+            r %= md;
+        }
+        cout << r << endl;
+    }
 }

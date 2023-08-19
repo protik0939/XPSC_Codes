@@ -51,17 +51,37 @@ using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node
 void solve()
 {
     ll n;
-    ll res = 0;
     cin >> n;
-    vl a;
+    ll x;
+    ll frq[30] = {0};
     f(i, 0, n)
     {
-        ll k;
-        cin>>k;
-        a.pb(k);
-        res |= a[i];
+        cin >> x;
+        f(j, 0, 30)
+        {
+            if ((x & (1 << j)) != 0)
+            {
+                frq[j]++;
+            }
+        }
     }
-    cout << res << endl;
+    f1(i, 1, n)
+    {
+        bool ck = true;
+        for (ll k = 0; k < 30; k++)
+        {
+            if ((frq[k] % i) != 0)
+            {
+                ck = false;
+                break;
+            }
+        }
+        if (ck)
+        {
+            cout << i << " ";
+        }
+    }
+    cout << endl;
 }
 
 int main()

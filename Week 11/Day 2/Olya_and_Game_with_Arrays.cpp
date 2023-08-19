@@ -48,27 +48,43 @@ using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node
 #define fbo(x, n) *x.find_by_order(n)
 #define ook(x, n) x.order_of_key(n)
 
-void solve()
-{
-    ll n;
-    ll res = 0;
-    cin >> n;
-    vl a;
-    f(i, 0, n)
-    {
-        ll k;
-        cin>>k;
-        a.pb(k);
-        res |= a[i];
-    }
-    cout << res << endl;
-}
-
 int main()
 {
     somoy;
     tc
     {
-        solve();
+        ll n;
+        cin >> n;
+        vector<vector<ll>> ar(n);
+        f(i, 0, n)
+        {
+            ll m;
+            cin >> m;
+            f(j, 0, m)
+            {
+                ll tmp;
+                cin >> tmp;
+                ar[i].pb(tmp);
+            }
+        }
+        f(i, 0, n)
+        {
+            srt(ar[i]);
+        }
+        vl x, y;
+        f(i, 0, n)
+        {
+            x.pb(ar[i][1]);
+            y.pb(ar[i][0]);
+        }
+        srt(x);
+        ll mn = vmin(y);
+        ll res = 0;
+        f(i, 1, x.size())
+        {
+            res += x[i];
+        }
+        res += mn;
+        cout << res << endl;
     }
 }

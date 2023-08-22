@@ -48,68 +48,47 @@ using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node
 #define fbo(x, n) *x.find_by_order(n)
 #define ook(x, n) x.order_of_key(n)
 
+bool cmp(pair<int, int> p, pair<int, int> q)
+{
+    if (p.second > q.second)
+    {
+        return true;
+    }
+    if (p.second < q.second)
+    {
+        return false;
+    }
+    if (p.first < q.first)
+    {
+        return true;
+    }
+    return false;
+}
+
 void solve()
 {
-    string s;
-    while (cin >> s)
+    ll n, k;
+    cin >> n >> k;
+    pll res[n];
+    f(i, 0, n)
     {
-        ll n = s.length();
-        ll i, j;
-        string a = "A   3  HIL JM O   2TUVWXY5";
-        string b = "01SE Z  8 ";
-        bool ck1 = false, ck2 = false;
-        for (i = 0, j = n - 1; i <= j; i++, j--)
-        {
-            if (s[i] != s[j])
-            {
-                ck1 = true;
-            }
-            if (s[i] >= 'A' && s[i] <= 'Z')
-            {
-                if (s[j] != a[s[i] - 'A'])
-                {
-                    ck2 = true;
-                }
-            }
-            else
-            {
-                if (s[j] != b[s[i] - '0'])
-                {
-                    ck2 = true;
-                }
-            }
-        }
-        cout << s << " -- is ";
-        if (ck1)
-        {
-            if (ck2)
-            {
-                cout << "not a palindrome." << endl;
-            }
-            else
-            {
-                cout << "a mirrored string." << endl;
-            }
-        }
-        else
-        {
-            if (ck2)
-            {
-                cout << "a regular palindrome." << endl;
-            }
-            else
-            {
-                cout << "a mirrored palindrome." << endl;
-            }
-        }
-        cout << endl;
+        ll x;
+        cin >> x;
+        res[i].first = i + 1;
+        res[i].second = (x - 1) % k;
     }
+    sort(res, res + n, cmp);
+    f(i, 0, n)
+    {
+        cout << res[i].first << " ";
+    }
+    cout << endl;
 }
 
 int main()
 {
     somoy;
-    // tc
+    tc
     {
         solve();
     }

@@ -50,66 +50,40 @@ using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node
 
 void solve()
 {
-    string s;
-    while (cin >> s)
+    ll n;
+    cin >> n;
+    vl arr;
+    map<ll, ll> mp;
+    mp[1] = 1;
+    f1(i, 2, n)
     {
-        ll n = s.length();
-        ll i, j;
-        string a = "A   3  HIL JM O   2TUVWXY5";
-        string b = "01SE Z  8 ";
-        bool ck1 = false, ck2 = false;
-        for (i = 0, j = n - 1; i <= j; i++, j--)
+        if (mp[i] == 1)
         {
-            if (s[i] != s[j])
+            continue;
+        }
+        ll x = i;
+        while (x <= n)
+        {
+            if (mp[x] != 1)
             {
-                ck1 = true;
-            }
-            if (s[i] >= 'A' && s[i] <= 'Z')
-            {
-                if (s[j] != a[s[i] - 'A'])
-                {
-                    ck2 = true;
-                }
-            }
-            else
-            {
-                if (s[j] != b[s[i] - '0'])
-                {
-                    ck2 = true;
-                }
+                arr.pb(x);
+                mp[x] = 1;
+                x *= 2;
             }
         }
-        cout << s << " -- is ";
-        if (ck1)
-        {
-            if (ck2)
-            {
-                cout << "not a palindrome." << endl;
-            }
-            else
-            {
-                cout << "a mirrored string." << endl;
-            }
-        }
-        else
-        {
-            if (ck2)
-            {
-                cout << "a regular palindrome." << endl;
-            }
-            else
-            {
-                cout << "a mirrored palindrome." << endl;
-            }
-        }
-        cout << endl;
     }
+    cout<<1<<" ";
+    f(i, 0, arr.size())
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 }
 
 int main()
 {
     somoy;
-    // tc
+    tc
     {
         solve();
     }

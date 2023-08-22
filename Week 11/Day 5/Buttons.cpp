@@ -50,66 +50,25 @@ using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node
 
 void solve()
 {
-    string s;
-    while (cin >> s)
+    ll a, b, c;
+    cin >> a >> b >> c;
+    ll x = c / 2;
+    a = a + c - x;
+    b = b + x;
+    if (a > b)
     {
-        ll n = s.length();
-        ll i, j;
-        string a = "A   3  HIL JM O   2TUVWXY5";
-        string b = "01SE Z  8 ";
-        bool ck1 = false, ck2 = false;
-        for (i = 0, j = n - 1; i <= j; i++, j--)
-        {
-            if (s[i] != s[j])
-            {
-                ck1 = true;
-            }
-            if (s[i] >= 'A' && s[i] <= 'Z')
-            {
-                if (s[j] != a[s[i] - 'A'])
-                {
-                    ck2 = true;
-                }
-            }
-            else
-            {
-                if (s[j] != b[s[i] - '0'])
-                {
-                    ck2 = true;
-                }
-            }
-        }
-        cout << s << " -- is ";
-        if (ck1)
-        {
-            if (ck2)
-            {
-                cout << "not a palindrome." << endl;
-            }
-            else
-            {
-                cout << "a mirrored string." << endl;
-            }
-        }
-        else
-        {
-            if (ck2)
-            {
-                cout << "a regular palindrome." << endl;
-            }
-            else
-            {
-                cout << "a mirrored palindrome." << endl;
-            }
-        }
-        cout << endl;
+        cout << "First" << endl;
+    }
+    else
+    {
+        cout << "Second" << endl;
     }
 }
 
 int main()
 {
     somoy;
-    // tc
+    tc
     {
         solve();
     }

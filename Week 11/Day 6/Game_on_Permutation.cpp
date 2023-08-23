@@ -43,6 +43,9 @@ using namespace __gnu_pbds;
 #define pii pair<int, int>
 #define pll pair<ll, ll>
 #define pss pair<string, string>
+#define ys cout << "YES" << endl
+#define no cout << "NO" << endl
+#define ses cout << endl;
 template <typename T>
 using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 #define fbo(x, n) *x.find_by_order(n)
@@ -50,66 +53,31 @@ using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node
 
 void solve()
 {
-    string s;
-    while (cin >> s)
+    pbds<int> a, b;
+    int n;
+    cin >> n;
+    int ans = 0;
+    f(i, 0, n)
     {
-        ll n = s.length();
-        ll i, j;
-        string a = "A   3  HIL JM O   2TUVWXY5";
-        string b = "01SE Z  8 ";
-        bool ck1 = false, ck2 = false;
-        for (i = 0, j = n - 1; i <= j; i++, j--)
-        {
-            if (s[i] != s[j])
+        int x;
+        cin >> x;
+        if (i)
+
+            if (!ook(a, x) && ook(b, x))
             {
-                ck1 = true;
+                a.insert(x);
+                ans++;
             }
-            if (s[i] >= 'A' && s[i] <= 'Z')
-            {
-                if (s[j] != a[s[i] - 'A'])
-                {
-                    ck2 = true;
-                }
-            }
-            else
-            {
-                if (s[j] != b[s[i] - '0'])
-                {
-                    ck2 = true;
-                }
-            }
-        }
-        cout << s << " -- is ";
-        if (ck1)
-        {
-            if (ck2)
-            {
-                cout << "not a palindrome." << endl;
-            }
-            else
-            {
-                cout << "a mirrored string." << endl;
-            }
-        }
-        else
-        {
-            if (ck2)
-            {
-                cout << "a regular palindrome." << endl;
-            }
-            else
-            {
-                cout << "a mirrored palindrome." << endl;
-            }
-        }
-        cout << endl;
+
+        b.insert(x);
     }
+    cout << ans << endl;
 }
 
 int main()
 {
     somoy;
-    // tc
+    tc
     {
         solve();
     }

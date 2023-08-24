@@ -47,6 +47,7 @@ using namespace __gnu_pbds;
 #define ys cout << "YES" << endl
 #define no cout << "NO" << endl
 #define ses cout << endl;
+#define sz(x) x.size()
 template <typename T>
 using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 #define fbo(x, n) *x.find_by_order(n)
@@ -54,18 +55,20 @@ using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node
 
 void solve()
 {
-    ll x, k;
-    cin >> x >> k;
-    if (x % k != 0)
+    string s;
+    cin >> s;
+    if (s[0] == '?')
     {
-        cout << 1 << endl;
-        cout << x << endl;
+        s[0] = '0';
     }
-    else
+    f(i, 0, sz(s))
     {
-        cout << 2 << endl;
-        cout << 1 << " " << x - 1 << endl;
+        if (s[i] == '?')
+        {
+            s[i] = s[i - 1];
+        }
     }
+    cout << s << endl;
 }
 
 int main()

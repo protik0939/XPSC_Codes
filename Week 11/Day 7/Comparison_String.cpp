@@ -54,17 +54,46 @@ using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node
 
 void solve()
 {
-    ll x, k;
-    cin >> x >> k;
-    if (x % k != 0)
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    ll a = 0, b = 0;
+    f(i, 0, n)
     {
-        cout << 1 << endl;
-        cout << x << endl;
+        if (s[i] == '>')
+        {
+            a++;
+        }
+        else
+        {
+            b++;
+        }
+    }
+
+    if (a == n || b == n)
+    {
+        cout << n + 1 << endl;
     }
     else
     {
-        cout << 2 << endl;
-        cout << 1 << " " << x - 1 << endl;
+        ll c1 = 0, c2 = 0, ans = 0;
+        for (ll i = 0; i < n; i++)
+        {
+            if (s[i] == '<')
+            {
+                c2 = 0;
+                c1++;
+            }
+            else
+            {
+                c1 = 0;
+                c2++;
+            }
+            ll cnt = max(c1, c2);
+            ans = max(ans, cnt);
+        }
+        cout << ans + 1 << endl;
     }
 }
 

@@ -93,40 +93,18 @@ void solve()
 {
     ll n;
     cin >> n;
-    unordered_map<ll, ll> mp;
-    while (n--)
+    cout << n / 2 << endl;
+    f(i, 1, n / 2)
     {
-        ll x;
-        cin >> x;
-        for (ll i = 2; i * i <= x; i++)
-        {
-            if (x % i == 0)
-            {
-                mp[i]++;
-                while (x % i == 0)
-                {
-                    x /= i;
-                }
-            }
-        }
-        if (x > 1)
-        {
-            mp[x]++;
-        }
+        cout << "2 ";
     }
-
-    ll ans = 1;
-    for (auto k : mp)
-    {
-        ans = max(ans, k.second);
-    }
-    cout << ans << endl;
+    cout << (n % 2 + 2) << endl;
 }
 
 int main()
 {
     somoy;
-    // tc
+    //tc
     {
         solve();
     }

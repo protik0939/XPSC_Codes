@@ -91,42 +91,38 @@ bool pal(const string &str)
 
 void solve()
 {
-    ll n;
-    cin >> n;
-    unordered_map<ll, ll> mp;
-    while (n--)
+    ll n, m, d;
+    cin >> n >> m >> d;
+    vl v(n);
+    f(i, 0, n)
     {
-        ll x;
-        cin >> x;
-        for (ll i = 2; i * i <= x; i++)
+        cin >> v[i];
+    }
+    ll x = 0, c = 0, s = 0;
+    ;
+    set<pii> st;
+    f(i, 0, n)
+    {
+        c = s + v[i] - d * (i + 1);
+        x = max(x, c);
+        if (v[i] > 0)
         {
-            if (x % i == 0)
+            st.insert({v[i], i});
+            s += v[i];
+            if (st.size() >= m)
             {
-                mp[i]++;
-                while (x % i == 0)
-                {
-                    x /= i;
-                }
+                s -= st.begin()->first;
+                st.erase(st.begin());
             }
         }
-        if (x > 1)
-        {
-            mp[x]++;
-        }
     }
-
-    ll ans = 1;
-    for (auto k : mp)
-    {
-        ans = max(ans, k.second);
-    }
-    cout << ans << endl;
+    cout << x << endl;
 }
 
 int main()
 {
     somoy;
-    // tc
+    tc
     {
         solve();
     }

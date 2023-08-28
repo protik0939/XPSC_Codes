@@ -53,33 +53,6 @@ using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node
 #define fbo(x, n) *x.find_by_order(n)
 #define ook(x, n) x.order_of_key(n)
 
-string intToBinary(ll x)
-{
-    string s;
-    while (x > 0)
-    {
-        s += (x % 2 ? '1' : '0');
-        x /= 2;
-    }
-    reverse(s.begin(), s.end());
-    return s;
-}
-
-bool isPowerOfTwo(ll x)
-{
-    return (x && (!(x & (x - 1))));
-}
-
-bool isPerfectSquare(ll x)
-{
-    if (x >= 0)
-    {
-        ll sr = sqrt(x);
-        return (sr * sr == x);
-    }
-    return false;
-}
-
 bool is_prime(ll n)
 {
     if (n < 2)
@@ -92,14 +65,6 @@ bool is_prime(ll n)
         if (n % i == 0)
             return false;
     return true;
-}
-
-bool isVowel(char ch)
-{
-    ch = tolower(ch);
-    if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
-        return true;
-    return false;
 }
 
 int gcd(int a, int b)
@@ -126,78 +91,38 @@ bool pal(const string &str)
 
 void solve()
 {
-    ll n;
-    cin >> n;
-    vpi v;
-    ll a[n];
-    f(i, 0, n)
+    ll q;
+    cin >> q;
+    map<ll, ll> mp1, mp2;
+    f(i, 0, q)
     {
-        cin >> a[i];
-        v.pb({a[i], i});
-    }
-
-    set<ll> s1, s2;
-    f1(i, 1, n)
-    {
-        s1.insert(i);
-        s2.insert(i);
-    }
-    srt(v);
-    vl p(n), q(n);
-    bool ck = true;
-    f(i, 0, sz(v))
-    {
-
-        ll val = v[i].first;
-        ll j = v[i].second;
-        if (s1.find(val) != s1.end())
+        string tmp;
+        cin >> tmp;
+        if (tmp == "+")
         {
-            p[j] = val;
-            q[j] = *(s2.begin());
-            s1.erase(val);
-            s2.erase(s2.begin());
+            ll y;
+            cin >> y;
+            mp1[y] = 1;
         }
         else
         {
-            if (s2.find(val) != s2.end())
+            ll y;
+            cin >> y;
+            ll s = mp2[y];
+            while (mp1[s + y] != 0)
             {
-                p[j] = *(s1.begin());
-                q[j] = val;
-                s1.erase(s1.begin());
-                s2.erase(val);
+                mp2[y] = s + y;
+                s += y;
             }
-            else
-            {
-                ck = false;
-            }
-        }
-        if (!ck)
-        {
-            break;
+            cout << s + y << endl;
         }
     }
-    if (!ck)
-    {
-        no;
-        return;
-    }
-    ys;
-    f(i, 0, sz(p))
-    {
-        cout << p[i] << " ";
-    }
-    ses;
-    f(i, 0, sz(q))
-    {
-        cout << q[i] << " ";
-    }
-    ses;
 }
 
 int main()
 {
     somoy;
-    tc
+    // tc
     {
         solve();
     }

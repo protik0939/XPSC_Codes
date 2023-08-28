@@ -53,33 +53,6 @@ using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node
 #define fbo(x, n) *x.find_by_order(n)
 #define ook(x, n) x.order_of_key(n)
 
-string intToBinary(ll x)
-{
-    string s;
-    while (x > 0)
-    {
-        s += (x % 2 ? '1' : '0');
-        x /= 2;
-    }
-    reverse(s.begin(), s.end());
-    return s;
-}
-
-bool isPowerOfTwo(ll x)
-{
-    return (x && (!(x & (x - 1))));
-}
-
-bool isPerfectSquare(ll x)
-{
-    if (x >= 0)
-    {
-        ll sr = sqrt(x);
-        return (sr * sr == x);
-    }
-    return false;
-}
-
 bool is_prime(ll n)
 {
     if (n < 2)
@@ -92,14 +65,6 @@ bool is_prime(ll n)
         if (n % i == 0)
             return false;
     return true;
-}
-
-bool isVowel(char ch)
-{
-    ch = tolower(ch);
-    if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
-        return true;
-    return false;
 }
 
 int gcd(int a, int b)
@@ -126,72 +91,35 @@ bool pal(const string &str)
 
 void solve()
 {
-    ll n;
-    cin >> n;
-    vpi v;
-    ll a[n];
-    f(i, 0, n)
+    ll n, k;
+    cin >> n >> k;
+    string s;
+    cin >> s;
+    if (k % 2 == 0)
     {
-        cin >> a[i];
-        v.pb({a[i], i});
-    }
-
-    set<ll> s1, s2;
-    f1(i, 1, n)
-    {
-        s1.insert(i);
-        s2.insert(i);
-    }
-    srt(v);
-    vl p(n), q(n);
-    bool ck = true;
-    f(i, 0, sz(v))
-    {
-
-        ll val = v[i].first;
-        ll j = v[i].second;
-        if (s1.find(val) != s1.end())
-        {
-            p[j] = val;
-            q[j] = *(s2.begin());
-            s1.erase(val);
-            s2.erase(s2.begin());
-        }
-        else
-        {
-            if (s2.find(val) != s2.end())
-            {
-                p[j] = *(s1.begin());
-                q[j] = val;
-                s1.erase(s1.begin());
-                s2.erase(val);
-            }
-            else
-            {
-                ck = false;
-            }
-        }
-        if (!ck)
-        {
-            break;
-        }
-    }
-    if (!ck)
-    {
-        no;
+        srt(s);
+        cout << s << endl;
         return;
     }
-    ys;
-    f(i, 0, sz(p))
+    vector<vl> frq(26, vector<ll>(2, 0));
+    f(i, 0, n)
     {
-        cout << p[i] << " ";
+        frq[s[i] - 'a'][i % 2]++;
     }
-    ses;
-    f(i, 0, sz(q))
+    string ans = "";
+    f(i, 0, n)
     {
-        cout << q[i] << " ";
+        f(j, 0, 26)
+        {
+            if (frq[j][i % 2] > 0)
+            {
+                frq[j][i % 2]--;
+                ans += (j + 'a');
+                break;
+            }
+        }
     }
-    ses;
+    cout << ans << endl;
 }
 
 int main()
